@@ -19,7 +19,7 @@ document.querySelector("#generate").addEventListener("click", (e) => {
   }
 
   getWeather(apiURL, zipCodeElement, apiKey).then(function (data) {
-    postData("/add", {
+    postData("/addDataa", {
       date: newDate,
       temp: data.list[0].main.temp,
       content: feelings,
