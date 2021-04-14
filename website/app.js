@@ -10,7 +10,7 @@ let d = new Date();
 let newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
 // Event Listener to add function to existing html dom element
-document.querySelector("#generate").addEventListener("click", (e) => {
+document.querySelector("#generate").addEventListener("click", () => {
   const zipCodeElement = document.querySelector("#zip").value;
   const feelings = document.querySelector("#feelings").value;
 
@@ -44,15 +44,13 @@ const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: {"Content-Type": "application/json",},
     body: JSON.stringify(data),
   });
 
   try {
     const newData = await response.json();
-    console.log(newData);
+    // console.log(newData);
     return newData;
   } catch (error) {
     console.log("error", error);
@@ -61,13 +59,13 @@ const postData = async (url = "", data = {}) => {
 
 // to get project data
 const updateUI = async () => {
-  const request = await fetch("/getAll");
+  const request = await fetch("/getAllData");
 
   try {
     const allData = await request.json();
-    dateElement.innerHTML = `Date: ${allData[0].date}`;
-    tempElement.innerHTML = `Temperature: ${allData[0].temp} &#176C`;
-    contentElement.innerHTML = `Weather feels like: ${allData[0].content}`;
+    dateElement.innerHTML = `Date: ${allData.currentDate}`;
+    tempElement.innerHTML = `Temperature: ${allData.temperature} &#176C`;
+    contentElement.innerHTML = `Weather feels like: ${allData.feelsContent}`;
   } catch (error) {
     console.log("error", error);
   }

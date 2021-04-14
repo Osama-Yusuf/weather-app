@@ -22,21 +22,21 @@ const server = app.listen(port, () => {
 });
 
 // get all data with get route
-app.get("/getAll", (req, res) => {
+app.get("/getAllData", (req, res) => {
   res.send(projectData);
 });
 
-projectData = [];
+let projectData = {};
 // post all data with post route
 app.post("/addDataa", (req, res) => {
   console.log(req.body);
   newEntry = {
-    date: req.body.date,
-    temp: req.body.temp,
-    content: req.body.content,
+    currentDate: req.body.date,
+    temperature: req.body.temp,
+    feelsContent: req.body.content,
   };
-  // updating the ui by pushing the project data to new entry 
-  projectData.push(newEntry);
+  // updating the ui by assigning the new entry to project data.
+  projectData = newEntry;
   res.send(projectData);
   console.log(projectData);
 });
