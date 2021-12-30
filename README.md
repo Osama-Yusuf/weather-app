@@ -13,4 +13,4 @@ using an instance app which require express that already installed & pointed to 
 Local server should be running and producing feedback to the Command Line through a working callback function.
 
 ### API Credentials
-Create API credentials on OpenWeatherMap.com or use existing API key inside.
+Create API credentials on OpenWeatherMap.com or use existing API key inside.  
